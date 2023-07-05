@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"p></p>
+    <button id ="first" >button 1</button>
+    <button id ="second">button 2</button>
+    <button id ="third" >button 3</button>
+    <script>
+        document.getElementById('first').addEventListener("click",displaychanes)
+        function displaychanes(){
+        document.getElementById('demo').innerHTML="button one is clicked"
+        }
+        document.getElementById('second').addEventListener("click",displaychanes1)
+        function displaychanes1(){
+        document.getElementById('demo').innerHTML="button two is clicked"
+        }
+        document.getElementById('third').addEventListener("click",displaychanes2)
+        function displaychanes2(){
+        document.getElementById('demo').innerHTML="button three is clicked"
+        }
+    </script>
+</body>
+</html>
