@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript basic animation</title>
+</head>
+<body onload="animateString('target')">
+  <pre id="target">w3resource </pre>
+
+  <script>
+    function animateString(id) {
+      const targetElement = document.getElementById(id);
+
+      setInterval(() => {
+        const text = targetElement.textContent;
+        const shiftedText = text[text.length - 1] + text.substring(0, text.length - 1);
+        targetElement.textContent = shiftedText;
+      }, 100);
+    }
+  </script>
+</body>
+</html>
