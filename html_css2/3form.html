@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id ="form1">
+        <div>
+        <label for ="text">Full name* :</label><br>
+        <input = "text" id ="text"placeholder="first name and last name" required>
+        </div>
+        <div>
+            <label for ="email">Email address* :</label><br>
+            <input = "email" id ="email" placeholder="first name and last name" required>
+            </div>
+            <div>
+                <label for ="packages">Select a tour package</label><br>
+                <select name ="packages" id ="packages">
+                
+                    <option value="Goa">Goa</option>
+                    <option value="vizag">Vizag</option>
+                    <option value="chennai">chennai</option>
+                    <option value="kerala">kerala</option>
+
+
+                </select>
+            </div>
+            <div>
+                <label for="date">Arrival date</label>
+                <br>
+                 <input type="date" id="date" name="date">
+            </div>
+            <div>
+                <label for="number">Number of persons*</label>
+                <br>
+                 <input ="Number" id="number" name="number">
+            </div>
+            <div>
+            <p>What would you like to avail:</p>
+            
+           
+            <label for="food">Fooding </label>
+            <input type="checkbox" id="food" name="tour" value="food"><br>
+            <label for="board">Boarding     </label>
+            <input type="checkbox" id="board" name="tour" value="board"><br>
+            <label for="sight">Sight seeing </label>
+            <input type="checkbox" id="sight" name="tour" value="labelt"><br>
+            
+            </div>
+              
+            <div>
+             <label for ="text">dicount coupoan code :</label><br>
+             <input = "text" id ="text"placeholder="Enter coupoan ">
+        
+            </div>
+            <div>
+                <div>
+                    <p>Terms and condition:</p>
+                    
+                    <input type="radio" id="agree" name="terms" value="agree">
+                    <label for="agree">I agree</label>
+                    <input type="radio" id="disagree" name="terms" value="disagree">
+                    <label for="disgaree">I disagree</label><br>
+            </div><br>
+
+            <button type="submit" form="form1" value="Submit">Submit</button>
+    </form>
+</body>
+</html>

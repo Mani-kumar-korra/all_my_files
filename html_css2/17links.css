@@ -1,0 +1,26 @@
+.button{
+    background-color: rgb(243, 205, 205);
+            padding: 5px 10px;
+            text-align: center;
+            border-radius: 8px;
+           
+            border: none;
+}
+a:link {
+    color: green;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: pink;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: red;
+  }
+  
+  /* selected link */
+  a:active {
+    color: yellow;
+  } 
