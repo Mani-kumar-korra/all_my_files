@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function pos_neg(x,y)
+        {
+            if ((x> 0 && y<0) || (x<0 && y>0)){
+                return true;
+
+            }
+            else {
+                return false;
+            }
+        }
+
+        document.write(pos_neg(2, 2));
+        document.write(pos_neg(-2, 2));
+        document.write(pos_neg(2, -2));
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   function isLeapYear(year) {
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Example usage:
+document.write(isLeapYear(2016));  // true
+document.write("<br/>")
+document.write(isLeapYear(2000));  // true
+document.write("<br/>")
+document.write(isLeapYear(1700));  // false
+document.write("<br/>")
+document.write(isLeapYear(1800));  // false
+document.write("<br/>")
+document.write(isLeapYear(100));   // false
+
+    </script>
+</body>
+</html>
