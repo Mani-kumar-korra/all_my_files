@@ -1,14 +1,14 @@
 $(document).ready(function() {
     var products = [
-      { id: 1, name: "surgical mask", sku: "SKU001", quantity: 100, price: 19.99, image: "mask.jpg" },
-      { id: 2, name: "surgical scissors", sku: "SKU002", quantity: 5, price: 9.99, image: "sciors.jpg" },
-      { id: 3, name: "surgical gloves", sku: "SKU003", quantity: 3, price: 14.99, image: "gloves.jpg" },
-      { id: 4, name: "multi-vitamin", sku: "SKU004", quantity: 8, price: 24.99, image: "mutli1.jpg" },
-      { id: 5, name: "omega 3 6 9 fish oil", sku: "SKU005", quantity: 12, price: 29.99, image: "omega.jpeg" },
-      { id: 6, name: "Aswaganda", sku: "SKU006", quantity: 2, price: 7.99, image: "aswagandha.jpg" },
-      { id: 7, name: "calicum and vitamin D", sku: "SKU007", quantity: 6, price: 11.99, image: "calcium.jpeg" },
-      { id: 8, name: "Fiber gummies", sku: "SKU008", quantity: 15, price: 17.99, image: "fibergummies.jpg" },
-      { id: 9, name: "Fiber gummies", sku: "SKU0sasda08", quantity: 15, price: 17.99, image: "fibergummies.jpg" }
+      { id: 1, name: "surgical mask", sku: "SKU001", quantity: 100, price: 19.99, image: "images/mask.jpg" },
+      { id: 2, name: "surgical scissors", sku: "SKU002", quantity: 5, price: 9.99, image: "images/sciors.jpg" },
+      { id: 3, name: "surgical gloves", sku: "SKU003", quantity: 3, price: 14.99, image: "images/gloves.jpg" },
+      { id: 4, name: "multi-vitamin", sku: "SKU004", quantity: 8, price: 24.99, image: "images/mutli1.jpg" },
+      { id: 5, name: "omega 3 6 9 fish oil", sku: "SKU005", quantity: 12, price: 29.99, image: "images/omega.jpeg" },
+      { id: 6, name: "Aswaganda", sku: "SKU006", quantity: 2, price: 7.99, image: "images/aswagandha.jpg" },
+      { id: 7, name: "calicum and vitamin D", sku: "SKU007", quantity: 6, price: 11.99, image: "images/calcium.jpeg" },
+      { id: 8, name: "Fiber gummies", sku: "SKU008", quantity: 15, price: 17.99, image: "images/fibergummies.jpg" },
+      { id: 9, name: "Fiber gummies", sku: "SKU0sasda08", quantity: 15, price: 17.99, image: "images/fibergummies.jpg" }
       
     ];
   
@@ -38,6 +38,7 @@ $(document).ready(function() {
     }
     
     function updatePrice() {
+     
         var selectedQuantity = parseInt($(".quantity").val()) || 1; // Use default quantity of 1 if none selected
         var selectedProduct = products.find(function(product) {
           return product.sku === selectedProductSKU;
@@ -128,7 +129,7 @@ $(document).ready(function() {
             <tr>
               <th>Quantity:</th>
               <td>
-                <select class="quantity" onchange="updatePrice()">
+                <select class="quantity">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
