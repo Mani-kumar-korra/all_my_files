@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('button').on({
+                click:function(){
+                $(this).css("background-color","lightgray")
+            },
+            mouseenter:function(){
+                $(this).css("background-color","lightblue")
+
+            },
+            mouseleave: function(){
+                $(this).css("background-color","yellow")
+            }
+        })
+        })
+    </script>
+    
+
+</head>
+<body>
+ <button>click here </button>
+</body>
+</html>

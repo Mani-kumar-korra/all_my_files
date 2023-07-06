@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   
+</head>
+<body>
+    <button id="btt">click here </button>
+    <p id="demo1">"wt are u seeing now will change "</p>
+    <script>
+        $(document).ready(function(){
+            $('#btt').click(function(){
+                $('#demo1').text(function(i, org){
+                    return "this is i  "+  i + "   this orignal val" + org
+
+                })
+            })
+        })
+    </script>
+</body>
+</html>
