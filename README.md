@@ -1,1 +1,1 @@
-This is a jquery assessment task assigned by Helen
+This is a jquery assessment task assigned by 
