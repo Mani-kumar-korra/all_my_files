@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style2.css">
+    <script data-main="cartProducts" src="require.js"></script>
+</head>
+
+<body>
+    <h1>the is your cart</h1>
+    <h3>these are the products which you have added</h3>
+    <div id="cart-items-container" data-bind="foreach: cartItems">
+        <div>
+
+            <h2 data-bind="text: name"></h2>
+            <p data-bind="text: '$' + price.toFixed(2)"></p>
+            <img data-bind="attr: { src: image }" alt="Product Image">
+            <button data-bind="click: $parent.removeFromCart">Remove</button>
+        </div>
+    </div>
+    
+</body>
+
+</html>

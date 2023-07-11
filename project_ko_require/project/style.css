@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #2874f0;;
+  color: #fff;
+  padding: 30px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  position: relative;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav ul li.cart {
+  float: right;
+  font-size: 25px;
+}
+
+nav ul li.cart a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+nav ul ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #000000;
+  padding: 0;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul ul li {
+  display: block;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.product {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+}
+
+.product h2 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.product img {
+  max-width: 100%;
+  height: 200px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure the images maintain their aspect ratio */
+  margin-bottom: 10px;
+}
+
+.product p {
+  margin: 0;
+}
+
+.price {
+  font-weight: bold;
+  color: #333;
+}
+
+.button {
+  display: inline-block;
+  background-color: #2874f0;;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin : 5px;
+}
+
+.button:hover {
+  background-color: #4c4e50;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:hover {
+  background-color:#4c4e50;
+}
+
+.prev,
+.next {
+  padding: 8px 15px;
+}
+
+.prev:disabled,
+.next:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+ul li ul li{
+  padding : 10px;
+}
+
+.details_cart{
+  display: flex;
+  font-size: 13px;
+}
+
+.pagination button.active {
+  background-color: #2874f0;;
+}

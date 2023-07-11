@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Bar with Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script data-main="home" src="require.js"> </script>
+  <!-- <script src="data.js"></script>  -->
+</head>
+<body>  
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li>
+          <a href="#">Category</a>
+          <ul>
+            <li><a href="#" data-bind="click: $root.filterByCategory.bind($data, 'Electronics')">Electronics</a></li>
+            <li><a href="#" data-bind="click: $root.filterByCategory.bind($data, 'Fashion')">Fashion</a></li>
+            <li><a href="#" data-bind="click: $root.filterByCategory.bind($data, 'Home')">Home</a></li>
+            <li><a href="#" data-bind="click: $root.filterByCategory.bind($data, 'Beauty')">Beauty</a></li>
+          </ul>
+        </li>
+        <li class="cart">
+          <a href="cartproducts.html">
+            <i class="fa fa-shopping-cart"></i> Cart <span data-bind="text: cartCount"></span>
+          </a>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="product-grid" data-bind="foreach: pagedProducts">
+      <div class="product">
+        <div class="product-image">
+          <img data-bind="attr: { src: image }" alt="Product Image">
+        </div>
+        <h2 data-bind="text: name"></h2>
+        <p class="price" data-bind="text: '$' + price"></p>
+<span class = "details_cart">
+        <a href="#" class="button" data-bind="click: $root.showProductDetails">Show details</a>
+        <a href="#" class="button" data-bind="click: function() { $root.addToCart($data); }">Add to cart</a>
+
+        </span>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button class="prev" data-bind="click: previousPage, enable: currentPageIndex() > 0">Previous</button>
+     
+      <span data-bind="foreach: paginationNumbers"> 
+      
+        <button class="page-number" data-bind="text: $data, click: $root.goToPage, css: { active: $root.isActivePage($data) }"></button>
+        <!-- click: $root.goToPage, css: { active: false / false based on below function } -->
+      </span>
+      <button class="next" data-bind="click: nextPage, enable: currentPageIndex() < maxPageIndex()">Next</button>
+    </div>
+  </div>
+
+  <div id="productDetailsModal" class="modal" data-bind="visible: isProductDetailsVisible">
+    <div class="modal-content">
+      <span class="close" data-bind="click: hideProductDetails">&times; CLOSE</span>
+      <div class="product-details" data-bind="with: selectedProduct">
+        <h2 data-bind="text: name"></h2>
+        <p class="price" data-bind="text: '$' + price"></p>
+        <p data-bind="text: sku"></p>
+        <p data-bind="text: description"></p>
+        <img data-bind="attr: { src: image }" alt="Product Image">
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="knockout-5.js"></script>
+   
+  <script src="data.js"></script> 
+  <script src="home.js"></script> -->
+</body>
+
+</html>
