@@ -25,7 +25,7 @@ Duration :
   2. 3.5 hours for require js(estimated time - Null)
 
      
-Solution Approch :
+Solution approach :
 
 started with creating 2 html page one is for home and another one is for cart.
 have created seprate files for js, i have used 2 buttons one is for show more details(show PDP), another button does 2 things 1.count 2. add products to cart( created seprate array basically it will push the selected products). Then filter products based on category.
