@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="product-details">
+      <h2 data-bind="text: selectedProduct().name"></h2>
+      <p class="price" data-bind="text: '$' + selectedProduct().price"></p>
+      <p data-bind="text: selectedProduct().sku"></p>
+      <p data-bind="text: selectedProduct().description"></p>
+      <img data-bind="attr: { src: selectedProduct().image }" alt="Product Image">
+
+      <div class="quantity">
+        <label for="quantityInput">Quantity:</label>
+        <input id="quantityInput" type="number" min="1" data-bind="value: quantity">
+        <p data-bind="text: 'Total Price: $' + totalPrice()"></p>
+        <button class="button" data-bind="click: addToCart">add cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
+  <script>
+    var selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+
+    function ProductDetailsViewModel(product) {
+      var self = this;
+      self.selectedProduct = ko.observable(product);
+      self.quantity = ko.observable(1);
+
+      self.totalPrice = ko.computed(function () {
+        return self.selectedProduct().price * self.quantity();
+      });
+
+      self.addToCart = function () {
+        
+        var cartItem = {
+          image: self.selectedProduct().image,
+          name: self.selectedProduct().name,
+          price: self.selectedProduct().price,
+          quantity: self.quantity()
+        };
+
+       
+        console.log(cartItem);
+      };
+    }
+
+    var productDetailsViewModel = new ProductDetailsViewModel(selectedProduct);
+    ko.applyBindings(productDetailsViewModel);
+  </script>
+</body>
+
+</html>
