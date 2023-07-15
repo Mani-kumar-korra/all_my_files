@@ -32,6 +32,8 @@ require(['knockout'], function (ko) {
         self.showEmptyCart = ko.computed(function () {
             return self.cartItems().length === 0;
         });
+        
+
     }
       
 
