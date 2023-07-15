@@ -21,7 +21,8 @@
         <label for="quantityInput">Quantity:</label>
         <input id="quantityInput" type="number" min="1" data-bind="value: quantity">
         <p data-bind="text: 'Total Price: $' + totalPrice()"></p>
-       
+
+        <a class="button" data-bind="click: addToCart">Add to cart</a>
       </div>
     </div>
   </div>
@@ -29,28 +30,49 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"></script>
   <script>
     var selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+    var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     function ProductDetailsViewModel(product) {
       var self = this;
       self.selectedProduct = ko.observable(product);
       self.quantity = ko.observable(1);
+      self.cartItems = ko.observableArray(cartItems);
 
       self.totalPrice = ko.computed(function () {
         return self.selectedProduct().price * self.quantity();
       });
 
       self.addToCart = function () {
-        
-        var cartItem = {
-          image: self.selectedProduct().image,
-          name: self.selectedProduct().name,
-          price: self.selectedProduct().price,
-          quantity: self.quantity()
-        };
+ 
+  var existingItem = ko.utils.arrayFirst(self.cartItems(), function (item) {
+    return item && item.name === self.selectedProduct().name;
+  });
 
-       
-        console.log(cartItem);
-      };
+ 
+  if (existingItem) {
+   
+    existingItem.count = Number(existingItem.count) + Number(self.quantity());
+
+    existingItem.price = existingItem.count * self.selectedProduct().price;
+    
+  
+  } else {
+    self.cartItems.push({
+      image: self.selectedProduct().image,
+      name: self.selectedProduct().name,
+      price: self.selectedProduct().price,
+      count: self.quantity()
+    });
+  }
+
+  
+  self.cartItems(self.cartItems().filter(function (item) {
+    return item !== null;
+  }));
+
+ 
+  localStorage.setItem('cartItems', JSON.stringify(self.cartItems()));
+};
     }
 
     var productDetailsViewModel = new ProductDetailsViewModel(selectedProduct);
