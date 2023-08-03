@@ -1,0 +1,134 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: black;
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #ab2f2f;
+}
+
+/* Header styles */
+h1 {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+h2 {
+    color: red;
+    text-align: center;
+}
+
+/* Form styles */
+#venueForm {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select,
+input[type="date"] {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    padding: 12px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8b0000;
+}
+
+/* Results styles */
+#venueResults {
+    padding: 20px;
+}
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-link {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.page-link:hover {
+    background-color: #8b0000;
+}
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    padding: 7px 7px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.pagination a:hover {
+    background-color: #8b0000;
+}
+
+.pagination .disabled {
+    pointer-events: none;
+    background-color: #ddd;
+    color: #888;
+    cursor: default;
+}
+
+.pagination .active {
+    background-color: #8b0000;
+    color: white;
+    cursor: default;
+}
