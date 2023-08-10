@@ -22,7 +22,7 @@ class Tournament
         $this->conn = $db;
     }
 
-    // Retrieve tournaments based on search criteria
+    
     public function searchTournaments($location, $sportCategory, $startDate, $endDate)
     {
         // Prepare the query
