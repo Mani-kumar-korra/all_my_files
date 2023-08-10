@@ -23,21 +23,21 @@ if (!isset($_SESSION["email"])) {
 <h4><a href="home.php">Home</a></h4>
 <h3 class="update-heading">Update User Details</h3>
 
-<!-- Form for updating name -->
+
 <form action="update_user.php" method="post" class="update-form">
     <label for="name">Name:</label>
     <input type="text" name="name" id="name" placeholder="Enter new name">
     <input type="submit" name="update_name" value="Update Name">
 </form>
 
-<!-- Form for updating email -->
+
 <form action="update_user.php" method="post" class="update-form">
     <label for="email">Email ID:</label>
     <input type="email" name="email" id="email" placeholder="Enter new email">
     <input type="submit" name="update_email" value="Update Email">
 </form>
 
-<!-- Form for updating password -->
+
 <form action="update_user.php" method="post" class="update-form">
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" placeholder="Enter new password">
