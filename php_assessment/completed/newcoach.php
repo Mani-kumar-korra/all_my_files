@@ -64,7 +64,7 @@ if (!isset($_SESSION["email"])) {
         $("#search-button").on("click", function () {
             const location = document.getElementById("location").value;
             const sport = document.getElementById("sport").value;
-            // For search ajax request
+        
             $.ajax({
                 type:'POST',
                 url:'search.php',
@@ -107,7 +107,6 @@ if (!isset($_SESSION["email"])) {
         let sport = document.getElementById("sport").value;
         console.log(self.dataset.coachName);
 
-        // For search ajax request
         $.ajax({
             type: 'POST',
             url: 'book_coach.php',
@@ -119,7 +118,7 @@ if (!isset($_SESSION["email"])) {
                 academy_id: self.dataset.academyId
             },
             success: function (response) {
-                // Check if the response is "success" to show the alert message
+
                 if (response === "success") {
                     alert("Coach booked successfully!");
                 }
