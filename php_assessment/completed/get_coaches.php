@@ -19,11 +19,11 @@ require_once 'con/Config.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Process the form data
+
     $academy_id = $_POST["academy_id"];
     $sport = $_POST["sport"];
 
-    // Fetch coaches for the selected academy and sport from the database
+
     $sql_coaches = "SELECT * FROM coaches WHERE academy_id = '$academy_id' AND sport = '$sport'";
     $result_coaches = $conn->query($sql_coaches);
 
