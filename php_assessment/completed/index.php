@@ -4,10 +4,8 @@ session_start();
 
 echo "<h2>Welcome, " . $_SESSION["name"] . "!</h2>";
 
-// Check if the user is logged in and their email is set in the session
 if (!isset($_SESSION["email"])) {
-    // If not logged in, redirect back to the login page or show an error message.
-    // For example:
+  
     header("Location: login.php");
     exit();
 }
@@ -72,16 +70,14 @@ if (!isset($_SESSION["email"])) {
     <section id="tournament-listings">
         <h2>Tournament Listings</h2>
         <?php
-        // Database connection details using MySQLi
-
-        // Include the Tournament class file
+     
         require_once 'con/config1.php';
         require_once 'Tournament.php';
 
         // Create an instance of the Tournament class
         $tournament = new Tournament($db);
 
-        // Check if the search form is submitted
+     
         if (isset($_POST['search'])) {
             // Retrieve form data
             $location = $_POST['location'];
@@ -89,12 +85,11 @@ if (!isset($_SESSION["email"])) {
             $startDate = $_POST['start-date'];
             $endDate = $_POST['end-date'];
 
-            // Check if any of the search criteria are provided
             if (!empty($location) || !empty($sportCategory) || !empty($startDate) || !empty($endDate)) {
                 // Fetch tournament data from the database based on search criteria
                 $tournaments = $tournament->searchTournaments($location, $sportCategory, $startDate, $endDate);
 
-                // Display tournament listings
+  
                 foreach ($tournaments as $t) {
                     echo '<div class="tournament">';
                     echo '<h3>' . $t['name'] . '</h3>';
@@ -115,7 +110,7 @@ if (!isset($_SESSION["email"])) {
                     echo '</div>';
                 }
             } else {
-                // No search criteria provided, display a message
+           
                 echo '<p>No search criteria selected. Please select at least one criterion to search for tournaments.</p>';
             }
         }
