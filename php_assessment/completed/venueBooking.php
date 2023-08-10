@@ -41,7 +41,6 @@ class VenueBooking
         $num_pages = ceil($num_results / $results_per_page);
         $start_index = ($page - 1) * $results_per_page;
 
-        // Perform the database query with LIMIT for pagination
         $query_with_limit = $query . " LIMIT ?, ?";
         $stmt_with_limit = $this->conn->prepare($query_with_limit);
         $stmt_with_limit->bind_param("ssii", $location, $sport, $start_index, $results_per_page);
@@ -52,7 +51,7 @@ class VenueBooking
             die("Database query error: " . $this->conn->error);
         }
 
-        // Display the matching venues
+     
         if ($result_with_limit->num_rows > 0) {
             while ($row = $result_with_limit->fetch_assoc()) {
                 echo "<p>Venue: " . $row['venue'] . ", venueId: " . $row['venue_id'] . ", Sport: " . $row['sports'] . ", Price: " . $row['venue_price'] . " <button onclick='buyVenue(\"" . $row['venue'] . "\", \"" . $row['sports'] . "\", " . $row['venue_price'] . ", " . $row['venue_id'] . ")'>Buy</button></p>";
@@ -61,18 +60,17 @@ class VenueBooking
             echo "No matching venues found.";
         }
 
-        // Display pagination links
+    
         if ($num_pages > 1) {
             echo "<div class='pagination'>";
 
-            // Previous button
             if ($page > 1) {
                 echo "<a href='javascript:void(0);' onclick='searchVenue(" . ($page - 1) . ", \"$location\", \"$sport\", \"$date\", \"$timeslot\")'>&laquo; Previous</a> ";
             } else {
                 echo "<span class='disabled'>&laquo; Previous</span> ";
             }
 
-            // Page numbers
+       
             for ($page_number = 1; $page_number <= $num_pages; $page_number++) {
                 if ($page_number == $page) {
                     echo "<span class='active'>$page_number</span> ";
@@ -81,7 +79,7 @@ class VenueBooking
                 }
             }
 
-            // Next button
+   
             if ($page < $num_pages) {
                 echo "<a href='javascript:void(0);' onclick='searchVenue(" . ($page + 1) . ", \"$location\", \"$sport\", \"$date\", \"$timeslot\")'>Next &raquo;</a> ";
             } else {
@@ -93,7 +91,7 @@ class VenueBooking
     }
 }
 
-// Handle the AJAX request to search for venues
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $config = new Config();
     $conn = $config->getConnection();
