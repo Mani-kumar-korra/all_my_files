@@ -205,7 +205,7 @@ class BookedVenues {
     }
 }
 
-// Create a new database connection
+
 $dbConnection = new DbConnection();
 $conn = $dbConnection->getConnection();
 
