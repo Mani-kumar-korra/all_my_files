@@ -48,13 +48,13 @@ if (!isset($_SESSION["email"])) {
 </form>
 
 <div id="results">
-    <!-- The search results will be displayed here -->
+    
 </div>
 
 <div id="coaches-popup" class="popup" style="display: none;">
     <button id="close-button">Close</button>
     <div id="coaches-content">
-        <!-- Coaches for the selected academy will be displayed here -->
+      
     </div>
 </div>
 
@@ -88,7 +88,7 @@ if (!isset($_SESSION["email"])) {
     function getCoachesAJaxCall(academyId){
         console.log(academyId);
         let sport = document.getElementById("sport").value;
-        // For search ajax request
+       
         $.ajax({
             type:'POST',
             url:'get_coaches.php',
