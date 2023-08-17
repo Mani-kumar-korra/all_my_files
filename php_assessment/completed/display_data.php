@@ -205,8 +205,13 @@ class BookedVenues {
     }
 }
 
+<<<<<<< HEAD
 // Create a new database connection
 $dbConnection = new config();
+=======
+
+$dbConnection = new DbConnection();
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
 $conn = $dbConnection->getConnection();
 
 // Create instances of the classes and display the data

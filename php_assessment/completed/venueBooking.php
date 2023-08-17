@@ -41,7 +41,10 @@ class VenueBooking
         $num_pages = ceil($num_results / $results_per_page);
         $start_index = ($page - 1) * $results_per_page;
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         $query_with_limit = $query . " LIMIT ?, ?";
         $stmt_with_limit = $this->conn->prepare($query_with_limit);
         $stmt_with_limit->bind_param("ssii", $location, $sport, $start_index, $results_per_page);
@@ -52,6 +55,10 @@ class VenueBooking
             die("Database query error: " . $this->conn->error);
         }
 
+<<<<<<< HEAD
+=======
+     
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         if ($result_with_limit->num_rows > 0) {
             while ($row = $result_with_limit->fetch_assoc()) {
                 echo "<p>Venue: " . $row['venue'] . ", venueId: " . $row['venue_id'] . ", Sport: " . $row['sports'] . ", Price: " . $row['venue_price'] . " <button onclick='buyVenue(\"" . $row['venue'] . "\", \"" . $row['sports'] . "\", " . $row['venue_price'] . ", " . $row['venue_id'] . ")'>Buy</button></p>";
@@ -60,6 +67,10 @@ class VenueBooking
             echo "No matching venues found.";
         }
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         if ($num_pages > 1) {
             echo "<div class='pagination'>";
 
@@ -69,6 +80,10 @@ class VenueBooking
                 echo "<span class='disabled'>&laquo; Previous</span> ";
             }
 
+<<<<<<< HEAD
+=======
+       
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
             for ($page_number = 1; $page_number <= $num_pages; $page_number++) {
                 if ($page_number == $page) {
                     echo "<span class='active'>$page_number</span> ";
@@ -77,7 +92,11 @@ class VenueBooking
                 }
             }
 
+<<<<<<< HEAD
             
+=======
+   
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
             if ($page < $num_pages) {
                 echo "<a href='javascript:void(0);' onclick='searchVenue(" . ($page + 1) . ", \"$location\", \"$sport\", \"$date\", \"$timeslot\")'>Next &raquo;</a> ";
             } else {
@@ -89,7 +108,7 @@ class VenueBooking
     }
 }
 
-// Handle the AJAX request to search for venues
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $config = new Config();
     $conn = $config->getConnection();

@@ -4,9 +4,14 @@ session_start();
 
 echo "<h2>Welcome, " . $_SESSION["name"] . "!</h2>";
 
+<<<<<<< HEAD
 
 if (!isset($_SESSION["email"])) {
     
+=======
+if (!isset($_SESSION["email"])) {
+  
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
     header("Location: login.php");
     exit();
 }
@@ -70,14 +75,23 @@ if (!isset($_SESSION["email"])) {
     <section id="tournament-listings">
       
         <?php
+<<<<<<< HEAD
     
         require_once 'con/Config.php';
+=======
+     
+        require_once 'con/config1.php';
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         require_once 'Tournament.php';
 
        
         $tournament = new Tournament($conn);
 
+<<<<<<< HEAD
        
+=======
+     
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         if (isset($_POST['search'])) {
            
             $location = $_POST['location'];
@@ -85,12 +99,19 @@ if (!isset($_SESSION["email"])) {
             $startDate = $_POST['start-date'];
             $endDate = $_POST['end-date'];
 
+<<<<<<< HEAD
            
+=======
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
             if (!empty($location) || !empty($sportCategory) || !empty($startDate) || !empty($endDate)) {
               
                 $tournaments = $tournament->searchTournaments($location, $sportCategory, $startDate, $endDate);
 
+<<<<<<< HEAD
                 
+=======
+  
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
                 foreach ($tournaments as $t) {
                     echo 'Tournamnet';
                     echo '<div class="tournament">';
@@ -112,7 +133,11 @@ if (!isset($_SESSION["email"])) {
                     echo '</div>';
                 }
             } else {
+<<<<<<< HEAD
                 
+=======
+           
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
                 echo '<p>No search criteria selected. Please select at least one criterion to search for tournaments.</p>';
             }
         }

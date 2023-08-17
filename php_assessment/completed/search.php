@@ -17,11 +17,19 @@ if (!isset($_SESSION["email"])) {
 require_once 'con/Config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<<<<<<< HEAD
    
     $location = $_POST["location"];
     $sport = $_POST["sport"];
 
   
+=======
+
+    $location = $_POST["location"];
+    $sport = $_POST["sport"];
+
+   
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
     $sql_academies = "SELECT * FROM academies WHERE location = '$location' AND sportCategory = '$sport'";
     $result_academies = $conn->query($sql_academies);
 

@@ -48,13 +48,21 @@ if (!isset($_SESSION["email"])) {
 </form>
 
 <div id="results">
+<<<<<<< HEAD
   
+=======
+    
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
 </div>
 
 <div id="coaches-popup" class="popup" style="display: none;">
     <button id="close-button">Close</button>
     <div id="coaches-content">
+<<<<<<< HEAD
        
+=======
+      
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
     </div>
 </div>
 
@@ -64,7 +72,11 @@ if (!isset($_SESSION["email"])) {
         $("#search-button").on("click", function () {
             const location = document.getElementById("location").value;
             const sport = document.getElementById("sport").value;
+<<<<<<< HEAD
             
+=======
+        
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
             $.ajax({
                 type:'POST',
                 url:'search.php',
@@ -86,7 +98,11 @@ if (!isset($_SESSION["email"])) {
     function getCoachesAJaxCall(academyId){
         console.log(academyId);
         let sport = document.getElementById("sport").value;
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         $.ajax({
             type:'POST',
             url:'get_coaches.php',
@@ -105,7 +121,10 @@ if (!isset($_SESSION["email"])) {
         let sport = document.getElementById("sport").value;
         console.log(self.dataset.coachName);
 
+<<<<<<< HEAD
        
+=======
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
         $.ajax({
             type: 'POST',
             url: 'book_coach.php',
@@ -117,7 +136,11 @@ if (!isset($_SESSION["email"])) {
                 academy_id: self.dataset.academyId
             },
             success: function (response) {
+<<<<<<< HEAD
                 
+=======
+
+>>>>>>> 630f1806b8cfd29af81c7e766ea6b1647275076f
                 if (response === "success") {
                     alert("Coach booked successfully!");
                 }

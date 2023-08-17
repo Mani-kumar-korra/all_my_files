@@ -1,5 +1,5 @@
 <?php
-// Start the session
+
 session_start();
 
 echo "<h2> Welcome " . $_SESSION["name"] . "!</h2>";
