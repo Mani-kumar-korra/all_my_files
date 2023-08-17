@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "con/db_class.php";
+require_once "update.php";
 
 if (!isset($_SESSION["email"])) {
     header("Location: login.php");
@@ -8,10 +8,10 @@ if (!isset($_SESSION["email"])) {
 }
 $updateMessage = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Create a new Database instance
+    
     $db = new Database();
 
-    // Connect to the database
+   
     if ($db->connect()) {
         $user_id = $_SESSION["user_id"];
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 echo "Failed to update email.";
             }
         } elseif (isset($_POST["update_password"])) {
-            // Update password
+            
             $password = $_POST["password"];
             $table = "signup";
             $field = "password";
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
-        // Close the database connection
+        
         $db->close();
     } else {
         echo "Failed to connect to the database.";

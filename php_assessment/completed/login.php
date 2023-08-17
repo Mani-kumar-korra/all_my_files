@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (isset($_SESSION["name"])) {
+    header("Location: home.php");
+    exit();
+}
 require 'con/Config.php';
 
 if (isset($_POST["submit"])) {
@@ -33,15 +38,11 @@ if (isset($_POST["submit"])) {
         user-select: none;
     }
 
-    input.captcha {
-        pointer-events: none;
-        letter-spacing: 12px;
-        text-decoration: line-through;
-    }
+  
 </style>
 
 <body>
-<form class="" action="" method="post">
+<form  method="post">
 
     <h2>Login</h2>
     Email <input type="text" name="email" value=""> <br>

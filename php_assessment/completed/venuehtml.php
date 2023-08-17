@@ -22,7 +22,7 @@ if (!isset($_SESSION["email"])) {
 <h1>Book Sports Venue</h1>
 <h3><a href="home.php">Go Back</a></h3>
 <form id="venueForm" method="post">
-    <!-- Your existing form elements go here -->
+   
     <label for="location">Location:</label>
     <select name="location" id="location">
         <option value="Chennai">Chennai</option>

@@ -19,7 +19,7 @@ require_once 'con/Config.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Process the form data
+   
     $academy_id = $_POST["academy_id"];
     $sport = $_POST["sport"];
 

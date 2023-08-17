@@ -16,7 +16,7 @@ $options = [
 
 try {
     // Create a new PDO instance
-    $db = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass, $options);
+    $conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass, $options);
 } catch (PDOException $e) {
     // Handle any errors that occurred during PDO connection
     die("Connection failed: " . $e->getMessage());

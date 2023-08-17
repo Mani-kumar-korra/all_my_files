@@ -17,12 +17,12 @@ class Tournament
 {
     private $conn;
 
-    public function __construct($db)
+    public function __construct($conn)
     {
-        $this->conn = $db;
+        $this->conn = $conn;
     }
 
-    // Retrieve tournaments based on search criteria
+    
     public function searchTournaments($location, $sportCategory, $startDate, $endDate)
     {
         // Prepare the query
@@ -32,7 +32,6 @@ class Tournament
                   INNER JOIN sport_categories sc ON t.sport_category_id = sc.sport_category_id
                   WHERE 1";
 
-        // Add conditions for search criteria if provided
         if (!empty($location)) {
             $query .= " AND l.name LIKE :location";
         }
@@ -46,10 +45,10 @@ class Tournament
             $query .= " AND t.date <= :end_date";
         }
 
-        // Prepare the statement
+        
         $stmt = $this->conn->prepare($query);
 
-        // Bind search criteria values if provided
+        
         if (!empty($location)) {
             $stmt->bindValue(':location', '%' . $location . '%');
         }
@@ -105,7 +104,7 @@ if (isset($_POST['book'])) {
     $lname = $_POST['lname'];
     $name=$_POST['name'];
 
-    $tournament = new Tournament($db);
+    $tournament = new Tournament($conn);
 
 
     if ($tournament->bookTournament($tournament_id ,$name, $user_id,$date,$fee,$lname)) {

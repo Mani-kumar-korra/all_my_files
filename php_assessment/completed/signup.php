@@ -1,26 +1,42 @@
 <?php
+
+
+
+if (!isset($_SESSION["name"])) {
+
+    header("Location: home.php");
+    exit();
+}
+
 require 'con/Config.php';
+
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Invalid email format');</script>";
     } else {
-        // Validate password format using regex
-        if (!preg_match("/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/", $password)) {
-            echo "<script>alert('Password should contain at least one special character and one digit, and be at least 6 characters long');</script>";
+        // Check if the email already exists
+        $check_query = "SELECT * FROM signup WHERE email = '$email'";
+        $result = mysqli_query($conn, $check_query);
+        if (mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Email already exists');</script>";
         } else {
-            // If email and password are valid, proceed with database insertion
-            $query = "INSERT INTO signup (name, email, password) VALUES ('$name', '$email', '$password')";
-            mysqli_query($conn, $query);
-            echo "<script>alert('Data Inserted Successfully');</script>";
-
-            // Redirect to login.php
-            header("Location: login.php");
-            exit; // Make sure to exit to prevent further execution of the current script
+            if (!preg_match("/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/", $password)) {
+                echo "<script>alert('Password should contain at least one special character and one digit, and be at least 6 characters long');</script>";
+            } else {
+                // Insert the new user
+                $query = "INSERT INTO signup (name, email, password) VALUES ('$name', '$email', '$password')";
+                if (mysqli_query($conn, $query)) {
+                    echo "Signup successful. You can now login!";
+                    header("Location: home.php");
+                    exit;
+                } else {
+                    echo "Error: " . mysqli_error($conn);
+                }
+            }
         }
     }
 }

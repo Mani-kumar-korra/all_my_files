@@ -48,13 +48,13 @@ if (!isset($_SESSION["email"])) {
 </form>
 
 <div id="results">
-    <!-- The search results will be displayed here -->
+  
 </div>
 
 <div id="coaches-popup" class="popup" style="display: none;">
     <button id="close-button">Close</button>
     <div id="coaches-content">
-        <!-- Coaches for the selected academy will be displayed here -->
+       
     </div>
 </div>
 
@@ -64,7 +64,7 @@ if (!isset($_SESSION["email"])) {
         $("#search-button").on("click", function () {
             const location = document.getElementById("location").value;
             const sport = document.getElementById("sport").value;
-            // For search ajax request
+            
             $.ajax({
                 type:'POST',
                 url:'search.php',
@@ -77,9 +77,7 @@ if (!isset($_SESSION["email"])) {
                 }
             });
         });
-        $(".get-coaches-button").on("click",function(){
-           console.log(this);
-        });
+      
 
         document.getElementById("close-button").addEventListener("click", function () {
             document.getElementById("coaches-popup").style.display = "none";
@@ -88,7 +86,7 @@ if (!isset($_SESSION["email"])) {
     function getCoachesAJaxCall(academyId){
         console.log(academyId);
         let sport = document.getElementById("sport").value;
-        // For search ajax request
+        
         $.ajax({
             type:'POST',
             url:'get_coaches.php',
@@ -107,7 +105,7 @@ if (!isset($_SESSION["email"])) {
         let sport = document.getElementById("sport").value;
         console.log(self.dataset.coachName);
 
-        // For search ajax request
+       
         $.ajax({
             type: 'POST',
             url: 'book_coach.php',
@@ -119,12 +117,12 @@ if (!isset($_SESSION["email"])) {
                 academy_id: self.dataset.academyId
             },
             success: function (response) {
-                // Check if the response is "success" to show the alert message
+                
                 if (response === "success") {
                     alert("Coach booked successfully!");
                 }
 
-                // Update the #results element with the new data (if required)
+                
                 $("#results").html(response);
             },
             error: function (response) {

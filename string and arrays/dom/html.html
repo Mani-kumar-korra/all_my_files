@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        function removedup(arr){
+    uniarr =[]
+    for(let i =0 ;i<arr.length;i++){
+        let words= arr[i]
+        let isDup =false
+
+
+        for(let j =0 ;j<arr.length;j++){
+            if(words.toLowerCase()===arr[j].toLowerCase()){
+                isDup = true;
+            }
+
+        }
+        if(isDup ==false){
+            uniarr.push(word)
+        }
+    }
+    return uniarr
+}
+
+let arr = ['bharath','Bharath','mani','pooja','re','Mani'];
+
+console.log(removedup(arr))
+    </script>
+</body>
+</html>

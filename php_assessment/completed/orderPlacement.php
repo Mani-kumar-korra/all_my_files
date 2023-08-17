@@ -26,7 +26,7 @@ class OrderPlacement
 
     public function placeOrder($data)
     {
-        $venueId = mysqli_real_escape_string($this->conn, $data['venueId']);
+       
         $venueName = mysqli_real_escape_string($this->conn, $data['venueName']);
         $sport = mysqli_real_escape_string($this->conn, $data['sport']);
         $price = floatval($data['price']);
@@ -34,6 +34,7 @@ class OrderPlacement
         $date = mysqli_real_escape_string($this->conn, $data['date']);
         $timeslot = mysqli_real_escape_string($this->conn, $data['timeslot']);
         $userId = mysqli_real_escape_string($this->conn, $_SESSION["user_id"]);
+        $venueId = mysqli_real_escape_string($this->conn, $data['venueId']);
 
         $query = "INSERT INTO ordered_venue (venue_id, venue_name, location, sport, timeslot, date, user_id, venue_price) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -50,14 +51,14 @@ class OrderPlacement
     }
 }
 
-// Handle the AJAX request to place an order
+// Handle the AJAX 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    session_start(); // Make sure you have session_start() at the beginning of the script if you are using sessions
+    session_start();
     $config = new Config();
     $conn = $config->getConnection();
 
     $orderPlacement = new OrderPlacement($conn);
-    $data = json_decode(file_get_contents('php://input'), true); // Read the JSON data from the request
+    $data = json_decode(file_get_contents('php://input'), true);
 
     $orderPlacement->placeOrder($data);
 }

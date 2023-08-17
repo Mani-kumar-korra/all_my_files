@@ -4,10 +4,9 @@ session_start();
 
 echo "<h2>Welcome, " . $_SESSION["name"] . "!</h2>";
 
-// Check if the user is logged in and their email is set in the session
+
 if (!isset($_SESSION["email"])) {
-    // If not logged in, redirect back to the login page or show an error message.
-    // For example:
+    
     header("Location: login.php");
     exit();
 }
@@ -33,7 +32,7 @@ if (!isset($_SESSION["email"])) {
 <body>
 <header>
     <h1>Tournament Web Project</h1>
-    <!-- Add navigation links or user profile info here -->
+   
     <nav>
         <ul>
             <li><a href=home.php>Home</a></li>
@@ -43,10 +42,10 @@ if (!isset($_SESSION["email"])) {
 </header>
 
 <main>
-    <!-- Tournament Search Section -->
+   
     <section id="tournament-search">
         <h2>Tournament Search</h2>
-        <form method="post">
+        <form method="post" action  = "index.php">
             <label for="location">Search by Location:</label>
             <input type="text" id="location" name="location" placeholder="Enter location">
 
@@ -68,34 +67,32 @@ if (!isset($_SESSION["email"])) {
         </form>
     </section>
 
-    <!-- Tournament Listings Section -->
     <section id="tournament-listings">
-        <h2>Tournament Listings</h2>
+      
         <?php
-        // Database connection details using MySQLi
-
-        // Include the Tournament class file
-        require_once 'con/config1.php';
+    
+        require_once 'con/Config.php';
         require_once 'Tournament.php';
 
-        // Create an instance of the Tournament class
-        $tournament = new Tournament($db);
+       
+        $tournament = new Tournament($conn);
 
-        // Check if the search form is submitted
+       
         if (isset($_POST['search'])) {
-            // Retrieve form data
+           
             $location = $_POST['location'];
             $sportCategory = $_POST['sportcategory'];
             $startDate = $_POST['start-date'];
             $endDate = $_POST['end-date'];
 
-            // Check if any of the search criteria are provided
+           
             if (!empty($location) || !empty($sportCategory) || !empty($startDate) || !empty($endDate)) {
-                // Fetch tournament data from the database based on search criteria
+              
                 $tournaments = $tournament->searchTournaments($location, $sportCategory, $startDate, $endDate);
 
-                // Display tournament listings
+                
                 foreach ($tournaments as $t) {
+                    echo 'Tournamnet';
                     echo '<div class="tournament">';
                     echo '<h3>' . $t['name'] . '</h3>';
                     echo '<p>Tournament ID: ' . $t['tournament_id']. '</p>';
@@ -115,7 +112,7 @@ if (!isset($_SESSION["email"])) {
                     echo '</div>';
                 }
             } else {
-                // No search criteria provided, display a message
+                
                 echo '<p>No search criteria selected. Please select at least one criterion to search for tournaments.</p>';
             }
         }

@@ -58,7 +58,7 @@ if (!isset($_SESSION["email"])) {
     exit();
 }
 
-require_once 'con/DbConnection.php';
+require_once 'con/newConfig.php';
 
 class BookedTournaments {
     private $conn;
@@ -206,7 +206,7 @@ class BookedVenues {
 }
 
 // Create a new database connection
-$dbConnection = new DbConnection();
+$dbConnection = new config();
 $conn = $dbConnection->getConnection();
 
 // Create instances of the classes and display the data

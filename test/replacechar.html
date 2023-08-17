@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function removechar(str, position){
+            if(position<0||position>=str.length){
+                return str
+            }
+            
+            return str.slice(0,position)+str.slice(position+1)
+            
+        }
+
+        document.write(removechar("maanikumar",1))
+    </script>
+</body>
+</html>
