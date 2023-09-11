@@ -1,0 +1,49 @@
+<div class="feedback-scroller-container">
+    <div class="feedback-scroller">
+        <ul class="scroller-list">
+            <?php $approvedFeedback = $block->getApprovedFeedback(); ?>
+            <?php if ($approvedFeedback->getSize() > 0): ?>
+                <?php foreach ($approvedFeedback as $feedback): ?>
+                    <li class="scroller-item">
+                        <strong>Name:</strong> <span style="margin: 0;"><?=$feedback->getFirstName() ?></span>
+                        <?= $feedback->getData('lastName') ?><br>
+                        <strong>Feedback:</strong>
+                        <?= $feedback->getFeedback() ?><br>
+                        <strong>Email:</strong> <?= $feedback->getEmail() ?>
+                        <br>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li class="no-feedback">No approved feedback available.</li>
+            <?php endif; ?>
+        </ul>
+    </div>
+    <style>
+        /* Define styles for the feedback scroller */
+        .feedback-scroller-container {
+            border: 1px solid #000;
+            font-family: arial;
+            max-height: 100px; /* Set the max height to control the scrollbar */
+            overflow-y: auto; /* Enable vertical scrollbar when content exceeds max height */
+            width: 500px;
+        }
+
+        /* Style the feedback list items */
+        .scroller-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .scroller-item {
+            line-height: 25px;
+            background: #eee;
+            padding: 5px; /* Add padding for spacing */
+        }
+
+        .no-feedback {
+            padding: 5px;
+        }
+    </style>
+</div>

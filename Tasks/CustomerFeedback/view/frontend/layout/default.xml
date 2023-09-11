@@ -1,0 +1,19 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Tasks\CustomerFeedback::css/styles.css" />
+    </head>
+
+    <body>
+        <referenceContainer name="footer">
+            <block class="Magento\Framework\View\Element\Template" name="custom.feedback.link" template="Tasks_CustomerFeedback::feedbackLink.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Tasks\CustomerFeedback\Block\HomepageFeedback" name="homepage.feedback" template="Tasks_CustomerFeedback::homepage_feedback.phtml" />
+
+        </referenceContainer>
+
+
+
+    </body>
+</page>

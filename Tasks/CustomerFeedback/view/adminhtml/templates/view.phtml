@@ -1,0 +1,35 @@
+<?php
+$data = $block->getDbData();
+if ($data) {
+    $firstname = $data->getFirstName();
+    $lastname = $data->getLastName();
+    $comment = $data->getFeedback();
+    $email = $data->getEmail();
+    ?>
+    <div class="container">
+        <h2 class="name">
+            <h3>either approve or disapprove</h3>
+            <?= $firstname . ' ' . $lastname ?>
+        </h2>
+        <div class="comment">
+            <h3>
+                <?= $comment ?>
+            </h3>
+        </div>
+
+        <div class =  "email">
+            <h3>
+                <?= $email ?>
+            </h3>
+
+        </div>
+        <a href="<?= $block->getUrl('customerfeedback1/index/accept', ['id' => $data->getFeedbackId()]) ?>"
+           class="my-link">Accept</a>
+        <a href="<?= $block->getUrl('customerfeedback1/index/reject', ['id' => $data->getFeedbackId()]) ?>"
+           class="my-link">Reject</a>
+    </div>
+    <?php
+} else {
+    echo "Data not found or not loaded correctly.";
+}
+?>
