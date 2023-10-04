@@ -37,6 +37,7 @@ class Index extends Template
 
     public function flattenConfigArray($configArray, $parentKey = '', $separator = '/')
     {
+        $finalResult = [];
         $result = [];
         foreach ($configArray as $key => $value) {
             $newKey = empty($parentKey) ? $key : $parentKey . $separator . $key;
@@ -56,13 +57,16 @@ class Index extends Template
 
                     // Rejoin the remaining parts to form the modified key
                     $newKey = implode($separator, $keyParts);
-
-                    $result[] = [
-                        'parent_key' => $initialKey,
-                        'key' => $newKey,
-                        'value' => $value
-                    ];
-                    $dummy[$newKey] = $this->getCustomElement($newKey, $initialKey, $value);
+                    $isSourcePresent = $this->getCustomElement($newKey);
+//                    echo "<br>".$newKey."<br>";
+                    if ($isSourcePresent) {
+                        $result[] = [
+                            'parent_key' => $initialKey,
+                            'key' => $newKey,
+                            'value' => $value,
+                            'source_model'=>$isSourcePresent
+                        ];
+                    }
                 }
             }
         }
@@ -73,26 +77,27 @@ class Index extends Template
         return $result;
     }
 
-    public function getCustomElement($key, $parent_key, $value)
+    public function getCustomElement($key)
     {
         // Call getElement with the provided key
         $custom = $this->configStructure->getElement($key);
         $custom = $custom->getData();
         if (isset($custom['source_model'])) {
-            // Now, you have the custom element based on the key
-            $isTrue = $custom['source_model'] === Yesno::class ? true : false;
-
-            // Debugging: Display the key when the condition is true
-            if ($isTrue) {
-                $this->matchKey[] = [
-                    'key' => $key,
-                    'parent_key' => $parent_key,
-                    'value' => $value
-                ];
-
-
+            $result = $custom['source_model'] === Yesno::class ? true : false;
+            if ($result) {
+                // Now, you have the custom element based on the key
+                return $custom['source_model'];
             }
-            return $isTrue;
+
+//            // Debugging: Display the key when the condition is true
+//            if ($isTrue) {
+//                $this->matchKey[] = [
+//                    'key' => $key,
+//                    'parent_key' => $parent_key,
+//                    'value' => $value
+//                ];
+//            }
+//            return $isTrue;
         }
         return false;
     }
