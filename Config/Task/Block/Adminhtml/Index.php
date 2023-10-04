@@ -81,7 +81,9 @@ class Index extends Template
     {
         // Call getElement with the provided key
         $custom = $this->configStructure->getElement($key);
+
         $custom = $custom->getData();
+
         if (isset($custom['source_model'])) {
             $result = $custom['source_model'] === Yesno::class ? true : false;
             if ($result) {
