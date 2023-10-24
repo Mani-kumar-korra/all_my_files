@@ -40,12 +40,13 @@ class Index extends Template
         $finalResult = [];
         $result = [];
         foreach ($configArray as $key => $value) {
-            $newKey = empty($parentKey) ? $key : $parentKey . $separator . $key;
+            $newKey = empty($parentKey) ? $key : $parentKey . $separator . $key; //for path ex section/group/setting'
             if (is_array($value)) {
                 $result = array_merge($result, $this->flattenConfigArray($value, $newKey, $separator));
             } elseif (in_array($value, ['0', '1'])) {
                 // Extract the initial key (the first part before $separator)
-                $initialKey = explode($separator, $newKey)[0]; // explode string to array
+                $initialKey = explode($separator, $newKey)[0]; // explode used to split  to array
+                //parent ku
 
 
                 // Skip rows with 'module' in the parent key
