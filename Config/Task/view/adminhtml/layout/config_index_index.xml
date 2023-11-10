@@ -1,0 +1,14 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <title>Configuration Dump</title>
+        <css src="Config_Task::css/admin-style.css" />
+        <script src="Config_Task::js/custom-script.js" />
+    </head>
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Config\Task\Block\Adminhtml\Index" name="custom.configdump" template="Config_Task::config.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
