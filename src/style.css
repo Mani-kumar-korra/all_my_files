@@ -1,0 +1,30 @@
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.canvas-container {
+  position: relative;
+}
+
+canvas {
+
+  background-color: transparent; /* Set canvas background to transparent */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
