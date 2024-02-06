@@ -1,70 +1,132 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { fabric } from 'fabric';
-import wholeImage from './rec.jpg';
-import './style.css';
-import svgPath from './svgPath';
+
 
 function App() {
-  const [canvas, setCanvas] = useState(null);
-  const imgRef = useRef(null);
+ const [canvas, setCanvas] = useState(null);
+ const [selectedImage, setSelectedImage] = useState(null);
+ const imgRef = useRef(null);
 
-  useEffect(() => {
-    const fabricCanvas = new fabric.Canvas('canvas');
-    setCanvas(fabricCanvas);
 
-    fabric.Image.fromURL(wholeImage, function (img) {
-      imgRef.current = img;
-      fabricCanvas.setDimensions({
-        width: img.width,
-        height: img.height,
-      });
-      img.set({ left: 0, top: 0 });
-      fabricCanvas.setBackgroundImage(img, fabricCanvas.renderAll.bind(fabricCanvas));
+ useEffect(() => {
+   const fabricCanvas = new fabric.Canvas('canvas');
+   setCanvas(fabricCanvas);
+ }, []);
 
-      const mattressSVG = svgPath;
-      const mattress = new fabric.Path(mattressSVG, {
+
+ const handleImageChange = (event) => {
+   const file = event.target.files[0];
+   if (file) {
+     const imageUrl = URL.createObjectURL(file);
+
+
+     // Display the selected image in the canvas
+     fabric.Image.fromURL(imageUrl, function (img) {
+       imgRef.current = img;
+       console.log('Image Dimensions:', img.width, img.height);
+
+
+       // Set canvas dimensions to match the image
+       canvas.setDimensions({
+         width: img.width,
+         height: img.height,
+       });
+
+
+       // Log canvas dimensions
+       console.log('Canvas Dimensions:', canvas.width, canvas.height);
+
+
+       img.set({ left: 0, top: 0 });
+
+
+        // Remove existing mattress object
+     if (canvas && canvas.getObjects().length > 0) {
+       canvas.remove(canvas.getObjects()[0]);
+     }
+       canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+
+       // Send the selected image to the backend
+       const formData = new FormData();
+       formData.append('image', file);
       
-        fill: '#282828',
-        opacity: 0.7,
-      });
 
-      fabricCanvas.add(mattress);
-    });
-  }, []); // Empty dependency array ensures this useEffect runs only once on component mount
+       fetch('http://localhost:3001/api/generate-svg', {
+         method: 'POST',
+         body: formData,
+       })
+         .then((response) => response.json())
+         .then((data) => {
+           const svgPath = data.svgPath;
+           console.log('SVG Path:', svgPath);
 
-  const changeColor = (color, alpha) => {
-    if (canvas && canvas.getObjects().length > 0) {
-      const mattressObject = canvas.getObjects()[0];
 
-      if (mattressObject && mattressObject.set) {
-        mattressObject.set({
-          fill: color,
-          opacity: alpha,
-        });
+           // Create fabric object using SVG path and add it to the canvas
+           if (canvas) {
+             const mattress = new fabric.Path(svgPath, {
+               fill: '#282828',
+               opacity: 0.7,
+             });
 
-        canvas.renderAll();
-      } else {
-        console.error('Error: mattressObject is not defined or does not have a set method');
-      }
-    } else {
-      console.error('Error: canvas is not defined or has no objects');
-    }
-  };
 
-  return (
-    <div>
-      <h1>Your React App</h1>
-      <canvas id="canvas"></canvas>
+             console.log('Mattress Dimensions:', mattress.width, mattress.height);
 
-      <div>
-        <button onClick={() => changeColor('green', 0.6)}>Gray (Transparent)</button>
-        <button onClick={() => changeColor('#046489', 0.6)}>Blue (Transparent)</button>
-        <button onClick={() => changeColor('#60371', 0.6)}>Black (Transparent)</button>
-        <button onClick={() => changeColor('#f34976', 0.6)}>Pink (Transparent)</button>
-        <button onClick={() => changeColor('#5e3a8c', 0.6)}>Purple (Transparent)</button>
-      </div>
-    </div>
-  );
+
+             canvas.add(mattress);
+           } else {
+             console.error('Error: Canvas is not defined.');
+           }
+         })
+         .catch((error) => {
+           console.error('Error fetching SVG path:', error);
+         });
+     });
+   }
+ };
+
+
+ const changeColor = (color, alpha) => {
+   if (canvas && canvas.getObjects().length > 0) {
+     const mattressObject = canvas.getObjects()[0];
+
+
+     if (mattressObject && mattressObject.set) {
+       mattressObject.set({
+         fill: color,
+         opacity: alpha,
+       });
+
+
+       canvas.renderAll();
+     } else {
+       console.error('Error: mattressObject is not defined or does not have a set method');
+     }
+   } else {
+     console.error('Error: canvas is not defined or has no objects');
+   }
+ };
+
+
+ return (
+   <div>
+   <h1>Your React App</h1>
+   <div>
+     <input type="file" onChange={handleImageChange} />
+   </div>
+   <div style={{ position: 'relative' }}>
+     <canvas id="canvas"></canvas>
+     <div style={{ position: 'absolute', top: 500, left: 0, width: '100%' }}>
+       <button onClick={() => changeColor('green', 0.6)}>Gray (Transparent)</button>
+       <button onClick={() => changeColor('#046489', 0.6)}>Blue (Transparent)</button>
+       <button onClick={() => changeColor('#60371', 0.6)}>Black (Transparent)</button>
+       <button onClick={() => changeColor('#f34976', 0.6)}>Pink (Transparent)</button>
+       <button onClick={() => changeColor('#5e3a8c', 0.6)}>Purple (Transparent)</button>
+     </div>
+   </div>
+ </div>
+ );
 }
+
 
 export default App;
